@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать расход</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <h1>Редактировать расход</h1>
+            <p class="subtitle">Измени данные и сохрани обновления.</p>
+        </header>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <section class="card">
+            <form method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                <label for="title">Название</label>
+                <input id="title" name="title" maxlength="150"
+                       value="{{ expense.title }}" required>
+
+                <label for="amount">Сумма (₸)</label>
+                <input id="amount" name="amount" type="number"
+                       min="0.01" step="0.01"
+                       value="{{ expense.amount }}" required>
+
+                <label for="category">Категория</label>
+                <select id="category" name="category" required>
+                    {% for category in categories %}
+                        <option value="{{ category }}"
+                            {% if category == expense.category %}selected{% endif %}>
+                            {{ category }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <label for="expense_date">Дата</label>
+                <input id="expense_date" name="expense_date" type="date"
+                       value="{{ expense.expense_date.isoformat() }}" required>
+
+                <button type="submit">Сохранить изменения</button>
+                <a href="{{ url_for('index') }}">Назад</a>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
