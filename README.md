@@ -25,14 +25,15 @@ A simple personal expense tracking web application built with Python and Flask.
 - HTML
 - CSS
 - pytest
+- python-dotenv
 
 ## Installation
 
 1. Clone this repository:
 
    ```bash
-   git clone YOUR_REPOSITORY_URL
-   cd expense_tracker
+git clone https://github.com/kamishaga44/expense_tracker.git
+cd expense_tracker
    ```
 
 2. Create a virtual environment:
@@ -91,9 +92,9 @@ Expense records are stored locally in an SQLite database.
 
 ## Security Notes
 
-The application uses CSRF protection for forms and validates submitted expense data. It is designed as a local personal finance project and does not currently include user accounts or multi-user access control.
+The application loads its secret key from the `SECRET_KEY` environment variable. For local development, create a `.env` file with your own secret key. The `.env` file is excluded from Git.
 
-The development secret key should be configured through an environment variable before deployment.
+For deployment, configure `SECRET_KEY` separately on the hosting platform. Never commit secret keys to the repository.
 
 ## Testing
 
