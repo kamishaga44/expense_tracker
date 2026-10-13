@@ -238,3 +238,21 @@ th {
     border-radius: 20px;
     transition: width 0.3s ease;
 }
+
+.back-button {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 18px;
+    background-color: #f3dce4;
+    color: #6b3447;
+    text-decoration: none;
+    border: 1px solid #e8c5d2;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #eac8d3;
+}

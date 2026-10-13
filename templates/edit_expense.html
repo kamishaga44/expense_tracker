@@ -51,7 +51,7 @@
                        value="{{ expense.expense_date.isoformat() }}" required>
 
                 <button type="submit">Сохранить изменения</button>
-                <a href="{{ url_for('index') }}">Назад</a>
+                <a class="back-button" href="{{ url_for('index') }}">← Назад</a>
             </form>
         </section>
     </main>
