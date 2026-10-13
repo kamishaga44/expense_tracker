@@ -3,10 +3,13 @@ from datetime import date
 from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CSRFProtect
+from dotenv import load_dotenv
+import os
 
 
+load_dotenv()
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "dev-key-change-before-deployment"
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///expenses.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
